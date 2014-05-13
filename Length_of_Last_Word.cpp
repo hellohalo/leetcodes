@@ -15,31 +15,21 @@ public:
     int lengthOfLastWord(const char *s) {
         if (s == NULL || *s == '\0') return 0;
         char *i = (char *)s;
-        char *start = NULL;
-        char *end = NULL;
         bool prespace = true;
+        int length = 0;
         while (*i != '\0') {
             if (*i == ' ')  {
                 prespace = true;
             } else {
                 if (prespace == true) {
-                    start = i;
-                    end = start;
+                    length = 1;
                     prespace = false;
                 } else {
-                    end = i;
+                    length ++;
                 }
             }
             i++;
         }
-        if (start == NULL) {
-            return 0;
-        }
-        int j = 0;
-        while (start != end + 1) {
-            j++;
-            start ++;
-        }
-        return j;
+        return length;
     }
 };
